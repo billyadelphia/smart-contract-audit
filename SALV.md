@@ -97,7 +97,7 @@ Code Snippet :
        _tokenTransfer(from, to, amount, takeFee);
    }
 ```
-- If the sender or the recipient is not excluded from the fee *(isExcludedFromFee) , then the amount that receipt gets will be decreased by the fee.
+- If the sender or the recipient is not excluded from the fee `isExcludedFromFee` , then the amount that receipt gets will be decreased by the fee.
 
 ## 2.3 External calls risk
 ### Severity: Low severity calls to external DEX Router (PancakeSwap).
