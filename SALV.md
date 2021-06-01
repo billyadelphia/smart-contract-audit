@@ -1,5 +1,5 @@
 # The Salvation Coin (SALV) security audit. 
-Conducted by a professional Blockchain Developer, Bily Putra B. (billyadelphia) in June 2021.
+Conducted by a professional Blockchain Developer, Bily Putra B. [billyadelphia](https://github.com/billyadelphia) in June 2021.
 
 ## The Salvation Coin (SALV) Specificities
  - Symbol : SALV
