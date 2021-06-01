@@ -17,12 +17,12 @@ Conducted by a professional Blockchain Developer, Bily Putra B. [billyadelphia](
 ### In Scope : SALV Solidity contract
 
 # 2. Findings 
-In total, n issues were reported including :
+In total, 16 issues were reported including :
 - 8 owner privileges (the ability of an owner to manipulate the contract).
 - 3 transfer amount manipulation (the final amount that the recipient will receive might be changed based on tax and reward function).
 - 2 external calls risk (External calls may execute malicious code in that contract or any other contract that it depends upon).
 - 2 timestamp dependence risk (the timestamp of the block can be manipulated by the miner, and all direct and indirect uses of the timestamp should be considered).
-- 1 high gas usage on the `transfer` function due of multiple functions are called on the execution. Some wallet application like Metamask may fail to calculate the gas usage and can cause `Out of Gas` error.
+- 1 gas issues (Possible of high gas usage and out of gas error cause by wallet like Metamask fail to calculate the gas usage).
 
 ## 2.1 Owner privileges
 ### Severity: Owner Privileges.
@@ -153,7 +153,7 @@ function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
 }}
 ```
 # 2.3 Timestamp dependence risk
-## Severity: Timestamp dependence.
+## Severity: Medium.
 ## Description: 
 - On `swapTokensForBnb`, the execution may fail due lack of invalid deadline.
 Code Snippet 
@@ -237,4 +237,9 @@ Suggestion
        }
    }
 ```
+
+# 2.4 Gas issue
+## Severity: Medium.
+## Description:
+- Unpredictable gas usage on the `transfer` function due of logic and multiple functions are called on the execution. Some wallet application like Metamask may fail to calculate the gas usage and can cause `Out of Gas` error. Suggestion is to increase the gas limit to avoid error on the wallet, or refactor some code logic on `transfer` function.
 
