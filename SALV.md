@@ -1,5 +1,5 @@
 
-# The Salvation Coin (SALV) security audit *(in progress)*. 
+# The Salvation Coin (SALV) security audit. 
 Conducted by a professional Blockchain Developer, Bily Putra B. [billyadelphia](https://github.com/billyadelphia) in June 2021.
 
 ## The Salvation Coin (SALV) Specificities
@@ -20,9 +20,10 @@ Conducted by a professional Blockchain Developer, Bily Putra B. [billyadelphia](
 In total, 16 issues were reported including :
 - 8 owner privileges (the ability of an owner to manipulate the contract).
 - 3 transfer amount manipulation (the final amount that the recipient will receive might be changed based on tax and reward function).
-- 2 external calls risk (External calls may execute malicious code in that contract or any other contract that it depends upon).
-- 2 timestamp dependence risk (the timestamp of the block can be manipulated by the miner, and all direct and indirect uses of the timestamp should be considered).
-- 1 gas issues (Possible of high gas usage and out of gas error cause by wallet like Metamask fail to calculate the gas usage).
+- 2 low severity external calls risk (External calls may execute malicious code in that contract or any other contract that it depends upon).
+- 2 medium severity of timestamp dependence risk (the timestamp of the block can be manipulated by the miner, and all direct and indirect uses of the timestamp should be considered).
+- 1 low severity of gas issues (Possible of high gas usage and out of gas error cause by wallet like Metamask fail to calculate the gas usage).
+- 2 low severity of know ERC20 issues.
 
 ## 2.1 Owner privileges
 ### Severity: Owner Privileges.
@@ -239,7 +240,16 @@ Suggestion
 ```
 
 # 2.4 Gas issue
-## Severity: Medium.
+## Severity: Low.
 ## Description:
 - Unpredictable gas usage on the `transfer` function due of logic and multiple functions are called on the execution. Some wallet application like Metamask may fail to calculate the gas usage and can cause `Out of Gas` error. Suggestion is to increase the gas limit to avoid error on the wallet, or refactor some code logic on `transfer` function.
+
+# 2.5 Known vulnerabilities of ERC-20 token
+## Severity: low.
+## Description:
+- It is possible to double withdrawal attack. More details [here](https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit)
+- Lack of transaction handling mechanism issue. [WARNING!](https://gist.github.com/Dexaran/ddb3e89fe64bf2e06ed15fbd5679bd20) This is a very common issue and it already caused millions of dollars losses for lots of token users! More details [here](https://docs.google.com/document/d/1Feh5sP6oQL1-1NHi-X1dbgT3ch2WdhbXRevDN681Jv4/edit).
+
+# 3. Conclusion
+The smart contract can need to be fixed for medium severity issue.
 
