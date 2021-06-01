@@ -1,3 +1,4 @@
+
 # The Salvation Coin (SALV) security audit *(in progress)*. 
 Conducted by a professional Blockchain Developer, Bily Putra B. [billyadelphia](https://github.com/billyadelphia) in June 2021.
 
@@ -21,6 +22,7 @@ In total, n issues were reported including :
 - 3 transfer amount manipulation (the final amount that the recipient will receive might be changed based on tax and reward function).
 - 2 external calls risk (External calls may execute malicious code in that contract or any other contract that it depends upon).
 - 2 timestamp dependence risk (the timestamp of the block can be manipulated by the miner, and all direct and indirect uses of the timestamp should be considered).
+- 1 high gas usage on the `transfer` function due of multiple functions are called on the execution. Some wallet application like Metamask may fail to calculate the gas usage and can cause `Out of Gas` error.
 
 ## 2.1 Owner privileges
 ### Severity: Owner Privileges.
@@ -116,7 +118,6 @@ Code Snippet
        );
 ```
 - `addLiquidity` may fail due of lack of BNB balance.
-
 Code Snippet
 ```sol
 function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
@@ -155,7 +156,6 @@ function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
 ## Severity: Timestamp dependence.
 ## Description: 
 - On `swapTokensForBnb`, the execution may fail due lack of invalid deadline.
-
 Code Snippet 
 ```sol
    function swapTokensForBnb(uint256 tokenAmount) private {
