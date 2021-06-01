@@ -23,8 +23,8 @@ In total, n issues were reported including :
 - 2 timestamp dependence risk (the timestamp of the block can be manipulated by the miner, and all direct and indirect uses of the timestamp should be considered).
 
 ## 2.1 Owner privileges
-Severity: Owner Privileges.
-Description:
+### Severity: Owner Privileges.
+### Description:
  - Exclude addresses from receiving reward `excludeFromReward`. Addresses can be re-include again by the owner *(includeInReward).
  - Exclude addresses from receiving fee `excludeFromFee`. Addresses can be re-include again by the owner *(includeInFee).
  - Change the percentage of tax fee `setTaxFeePercent`.
