@@ -107,7 +107,7 @@ Code Snippet :
 
 Code Snippet 
 ```
-       // make the swap    uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+      uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
            tokenAmount,
            0, // accept any amount of ETH
            path,
