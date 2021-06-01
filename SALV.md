@@ -40,7 +40,7 @@ Description:
 - The sender cannot send SALV token more than max transaction amount `_maxTxAmount`.
 - If the contract SALV balance is greater than 500 SALV (a constant number of SALV that will be add to the liquidity) and in swap and liquify variable is disabled and the sender is not the pair address and swap and liquify variable is enabled, then the contract will add new liquidity to the pair address by half of the amount of the SALV balance within the contract and also will burn quarter of SALV balance within the contract and also send some BNB worth of quarter of SALV balance within the contract to the contract address. 
 Code Snippet :
-```
+```sol
  function _transfer(
        address from,
        address to,
@@ -106,7 +106,7 @@ Code Snippet :
 - On `swapTokensForBnb`, the execution may fail due lack of liquidity.
 
 Code Snippet 
-```
+```sol
       uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
            tokenAmount,
            0, // accept any amount of ETH
@@ -118,7 +118,7 @@ Code Snippet
 - `addLiquidity` may fail due of lack of BNB balance.
 
 Code Snippet
-```
+```sol
 function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
        // approve token transfer to cover all possible scenarios
       _approve(address(this), address(uniswapV2Router), tokenAmount);
@@ -136,7 +136,7 @@ function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
 ```
 
 Suggestion
-``` 
+```sol
 function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
        // approve token transfer to cover all possible scenarios
        if(ethAmount >= address(this).balance){
@@ -157,7 +157,7 @@ function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
 - On `swapTokensForBnb`, the execution may fail due lack of invalid deadline.
 
 Code Snippet 
-```
+```sol
    function swapTokensForBnb(uint256 tokenAmount) private {
        // generate the uniswap pair path of token -> weth
        address[] memory path = new address[](2);
@@ -177,7 +177,7 @@ Code Snippet
    }
 ```
 Suggestion 
-```
+```sol
    function swapTokensForBnb(uint256 tokenAmount) private {
        // generate the uniswap pair path of token -> weth
        address[] memory path = new address[](2);
@@ -199,7 +199,7 @@ Suggestion
 - On `addLiquidity`, the execution may fail due lack of invalid deadline.
 
 Code Snippet 
-```
+```sol
    function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
        // approve token transfer to cover all possible scenarios
        if (ethAmount >= address(this).balance) {
@@ -219,7 +219,7 @@ Code Snippet
 ```
 
 Suggestion 
-```
+```sol
    function addLiquidity(uint256 tokenAmount, uint256 ethAmount) private {
        // approve token transfer to cover all possible scenarios
        if (ethAmount >= address(this).balance) {
